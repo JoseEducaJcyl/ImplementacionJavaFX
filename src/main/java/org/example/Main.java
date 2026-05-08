@@ -1,17 +1,37 @@
 package org.example;
 
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+public class Main extends Application {
+    @Override
+    public void start(Stage stage) throws Exception {
+        Label label = new Label("ingrese su nombre");
+        TextField textField = new TextField();
+        Button button = new Button("Enviar");
+        Label label2 = new Label("Texto de ejemplo");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
-        }
+        button.setOnAction(e -> {
+            label2.setText(textField.getText());
+            textField.clear();
+        });
+
+        VBox vBox = new VBox(label, textField, button, label2);
+        Scene scene = new Scene(vBox, 300, 300);
+        stage.setTitle("Implementacion Etiquetas");
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }
